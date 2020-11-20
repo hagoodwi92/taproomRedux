@@ -1,27 +1,13 @@
 import React from 'react';
 import Tap from "./Tap";
+import PropTypes from "prop-types";
 
-const masterTaplist = [
-  {
-      name:"Silver IPA",
-      brand:"Boneyard Brewing",
-      price:"5",
-      alcoholContent : "6.2%"
-  },
-  {
-    name:"Green IPA",
-    brand:"Boneyard Brewing",
-    price:"5",
-    alcoholContent : "6.2%"
-},
-
-]
-function Taplist(){
+function Taplist(props){
   return (
     <React.Fragment>
       <hr/>
-      {masterTaplist.map((tap, index) =>
-        <Tap names = {tap.names}
+      {props.tapList.map((tap, index) =>
+        <Tap name = {tap.name}
           brand = {tap.brand}
           price = {tap.price}
           alcoholContent = {tap.alcoholContent}
@@ -30,5 +16,9 @@ function Taplist(){
     </React.Fragment>
   );
 }
+
+Taplist.propTypes = {
+  tapList: PropTypes.array
+};
 
 export default Taplist;
