@@ -15,6 +15,21 @@ class TapControl extends React.Component {
     
   }
 
+  handleBuyingItem = (id) => {
+    const newMasterTapList = this.state.masterTapList;
+    newMasterTapList.map((tap) => {
+      if(tap.id === id && tap.quantity !== 0) {
+        tap.quantity = tap.quantity - 1;
+      } else if (tap.id === id && tap.quantity === 0) {
+        tap.quantity = "Out of Stock";
+      }
+      return tap;
+    })
+    this.setState({
+      masterTapList: newMasterTapList
+    })
+  }
+
   handleChangingSelectedTap = (id) => {
     const selectedTap = this.state.masterTapList.filter(Tap => Tap.id === id)[0];
     this.setState({selectedTap: selectedTap});
