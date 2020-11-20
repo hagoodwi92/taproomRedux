@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function TapDetail(props){
-  const { tap } = props;
+  const { tap, onClickingDelete } = props;
 
   return (
     <React.Fragment>
@@ -10,13 +10,15 @@ function TapDetail(props){
       <h3>{tap.brand} {tap.name}</h3>
       <h4>Price: {tap.price}</h4>
       <p>Abv: <em>{tap.alcoholContent}</em></p>
+      <button onClick={()=> onClickingDelete(tap.id) }>Remove Tap</button> 
       <hr/>
     </React.Fragment>
   );
 }
 
 TapDetail.propTypes = {
-  tap: PropTypes.object
+  tap: PropTypes.object,
+  onClickingDelete: PropTypes.func
 };
 
 export default TapDetail;

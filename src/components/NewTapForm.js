@@ -8,7 +8,7 @@ function NewTapForm(props){
   function handleNewTapFormSubmission(event) {
     event.preventDefault();
     event.preventDefault();
-    props.onNewTapCreation({name: event.target.name.value, brand: event.target.brand.value, price: event.target.price.value, alcoholContent: event.target.alcoholContent.value, quantity: event.target.quantity.value, id: v4()});
+    props.onNewTapCreation({name: event.target.name.value, brand: event.target.brand.value, price: event.target.price.value, alcoholContent: event.target.alcoholContent.value, quantity: 124, id: v4()});
   }
 
   return (
@@ -30,10 +30,6 @@ function NewTapForm(props){
         type='text'
         name='alcoholContent'
         placeholder='alcoholContent' />
-        <input
-        type='text'
-        name='quantity'
-        placeholder='quantity' />
         <button type='submit'>Add Tap</button>
       </form>
     </React.Fragment>

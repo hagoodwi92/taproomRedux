@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 
 function Tap(props){
+  // const sQuantity = 124
   return(
     
     <React.Fragment>

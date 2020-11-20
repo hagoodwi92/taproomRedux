@@ -15,6 +15,14 @@ class TapControl extends React.Component {
     
   }
 
+  handleDeletingTap = (id) => {
+    const newMasterTapList = this.state.masterTapList.filter(tap => tap.id !== id);
+    this.setState({
+      masterTapList: newMasterTapList,
+      selectedTap: null
+    });
+  }
+
   handleBuyingItem = (id) => {
     const newMasterTapList = this.state.masterTapList;
     newMasterTapList.map((tap) => {
@@ -60,7 +68,7 @@ class TapControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.selectedTap != null) {
-      currentlyVisibleState = <TapDetail tap = {this.state.selectedTap} />
+      currentlyVisibleState = <TapDetail tap = {this.state.selectedTap} onClickingDelete = {this.handleDeletingTap} />
       buttonText = "Return to Tap List";
     }
     else if (this.state.formVisibleOnPage) {
