@@ -6,7 +6,7 @@ function Tap(props){
     
     <React.Fragment>
       <h3>{props.brand} {props.name}</h3>
-      <p>Pints left: </p>{props.quantity}
+      <p>Pints left: </p>{props.quantity} <br></br><br></br>
       <button onClick={() => props.whenTapClicked(props.id)}>Show Details</button>
       <button onClick={() => props.whenBuyClicked(props.id)}>Buy</button>
       <hr></hr>
