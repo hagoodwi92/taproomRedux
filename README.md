@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+Had a git issue, made a new repo. Old repo here : (https://github.com/hagoodwi92/tap-room)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
