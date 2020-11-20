@@ -7,8 +7,9 @@ function TapDetail(props){
   return (
     <React.Fragment>
       <h1>Tap Detail</h1>
-      <h3>{tap.name} - {tap.brand}-{tap.price}</h3>
-      <p><em>{tap.alcoholContent}</em></p>
+      <h3>{tap.brand} {tap.name}</h3>
+      <h4>Price: {tap.price}</h4>
+      <p>Abv: <em>{tap.alcoholContent}</em></p>
       <hr/>
     </React.Fragment>
   );

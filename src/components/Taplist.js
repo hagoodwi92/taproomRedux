@@ -11,7 +11,7 @@ function TapList(props){
         <Tap
           whenTapClicked = { props.onTapSelection }
           name={tap.name}
-          name={tap.brand}
+          brand={tap.brand}
           price={tap.price}
           alcoholContent={tap.alcoholContent}
           id={tap.id}
