@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 function Tap(props){
   return(
@@ -11,5 +12,12 @@ function Tap(props){
     </React.Fragment>
   )
 }
+
+Tap.propTypes = {
+  name: PropTypes.string,
+  brand: PropTypes.string,
+  price: PropTypes.number,
+  alcoholContent: PropTypes.string
+};
 
 export default Tap;
