@@ -5,7 +5,7 @@ This React application lists available taps, as well as other details about the 
 # Diagram 
 
 ![Image of diagram]
-(![alt text](https://github.com/[hagoodwi92]/[taproom]/blob/[origin]/image.jpg?raw=true))
+(![alt text](https://github.com/hagoodwi92/taproom/blob/origin/image.jpg?raw=true))
 
 Had a git issue, made a new repo. Old repo here : (https://github.com/hagoodwi92/tap-room)
 
