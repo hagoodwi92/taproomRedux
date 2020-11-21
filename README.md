@@ -2,6 +2,10 @@
 
 This React application lists available taps, as well as other details about the tap. 
 
+# Technologies used
+
+React, JSX, create-react-app, bootstrap
+
 # Diagram 
 
 [Imgur](https://i.imgur.com/9HkKyOH.png)
