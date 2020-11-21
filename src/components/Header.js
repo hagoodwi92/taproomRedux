@@ -2,7 +2,11 @@ import React from "react";
 
 function Header(){
   return (
-    <h1>Tap Room</h1>
+    <React.Fragment>
+    <div class= "jumbotron">
+      <h1>Tap Room</h1>
+    </div>
+    </React.Fragment>
   );
 }
 
