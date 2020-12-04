@@ -2,7 +2,7 @@ import React from 'react';
 import Tap from "./Tap";
 import PropTypes from "prop-types";
 
-function Taplist(props){
+function TapList(props){
   return (
     <React.Fragment>
       <hr />
@@ -24,10 +24,10 @@ function Taplist(props){
 }
 
 
-Taplist.propTypes = {
+TapList.propTypes = {
   // The PropType below has been updated - it's now an object, not an array.
   tapList: PropTypes.object,
   onTapSelection: PropTypes.func
 };
 
-export default Taplist;
+export default TapList;
