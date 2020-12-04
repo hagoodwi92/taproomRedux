@@ -51,6 +51,31 @@ describe('tapListReducer', () => {
       }
   })
 });
+test('Should successfully update a tap', () => {
+  action = {
+    type: 'UPDATE_TAP',
+    name: 'Update',
+    brand: 'Update',
+    price: 7,
+    quantity: 2,
+    alcoholContent: 'Update',
+    id: 1
+  };
+  expect(tapListReducer(currentState, action)).toEqual({
+    1: {name: 'Update',
+    brand: 'Update',
+    price: 7,
+    quantity: 2,
+    alcoholContent: 'Update',
+    id: 1},
+    2: {name: 'IPA',
+    brand: 'Burnside',
+    price: 7,
+    quantity: 2,
+    alcoholContent: '4.5',
+    id: 2}
+  });
+});
 test('Should successfully remove a tap', () => {
   action = {
     type: 'DELETE_TAP',

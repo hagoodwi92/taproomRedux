@@ -16,6 +16,17 @@ export default (state = {}, action) => {
     const newState = {...state};
     delete newState[id];
     return newState;
+  case 'UPDATE_TAP':
+    return Object.assign({}, state, {
+      [1]: {
+        name: 'Update',
+        brand: 'Update',
+        price: 7,
+        quantity: 2,
+        alcoholContent: 'Update',
+        id: 1
+      }
+    });
   default:
     return state;
   }
