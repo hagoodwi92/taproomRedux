@@ -1,7 +1,9 @@
 import React from 'react';
 import NewTapForm from './NewTapForm';
+import EditTapForm from './EditTapForm'
 import Taplist from './Taplist';
 import TapDetail from './TapDetail';
+import { connect } from 'react-redux';
 
 class TapControl extends React.Component {
 
@@ -64,11 +66,31 @@ class TapControl extends React.Component {
     }
   }
 
+  handleEditClick = () => {
+    this.setState({editing: true});
+  }
+
+  handleEditingTapInList = (tapToEdit) => {
+    const editedMasterTapList = this.state.masterTapList
+      .filter(tap => tap.id !== this.state.selectedTap.id)
+      .concat(tapToEdit);
+    this.setState({
+      masterTapList: editedMasterTapList,
+      editing: false,
+      selectedTap: null
+    });
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.selectedTap != null) {
-      currentlyVisibleState = <TapDetail tap = {this.state.selectedTap} onClickingDelete = {this.handleDeletingTap} />
+    if (this.state.editing ) {      
+      currentlyVisibleState = <EditTapForm tap = {this.state.selectedTap} onEditTap = {this.handleEditingTapInList} />
+      buttonText = "Return to Tap List";
+    }
+    else if (this.state.selectedTap != null) {
+      currentlyVisibleState = <TapDetail tap = {this.state.selectedTap} onClickingDelete = {this.handleDeletingTap}
+      onClickingEdit = {this.handleEditClick} />
       buttonText = "Return to Tap List";
     }
     else if (this.state.formVisibleOnPage) {
@@ -88,4 +110,6 @@ class TapControl extends React.Component {
   }
 
 
-export default TapControl;
+  TapControl = connect()(TapControl);
+
+  export default TapControl;

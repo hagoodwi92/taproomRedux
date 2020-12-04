@@ -10,6 +10,7 @@ function TapDetail(props){
       <h3>{tap.brand} {tap.name}</h3>
       <h4>Price: {tap.price}</h4>
       <p>Abv: <em>{tap.alcoholContent}</em></p>
+      <button onClick={ props.onClickingEdit }>Update Tap</button> 
       <button onClick={()=> onClickingDelete(tap.id) }>Remove Tap</button> 
       <hr/>
     </React.Fragment>
@@ -18,7 +19,8 @@ function TapDetail(props){
 
 TapDetail.propTypes = {
   tap: PropTypes.object,
-  onClickingDelete: PropTypes.func
+  onClickingDelete: PropTypes.func,
+  onClickingEdit: PropTypes.func
 };
 
 export default TapDetail;
