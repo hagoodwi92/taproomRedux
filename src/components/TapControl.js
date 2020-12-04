@@ -12,7 +12,7 @@ class TapControl extends React.Component {
     super(props);
     console.log(props);
     this.state = {
-      formVisibleOnPage: false,
+      // formVisibleOnPage: false,
       selectedTap: null,
       editing: false
     };
@@ -63,7 +63,7 @@ class TapControl extends React.Component {
       alcoholContent: alcoholContent,
     }
     dispatch(action);
-    this.setState({formVisibleOnPage: false });
+    // this.setState({formVisibleOnPage: false });
   }
 
   handleClick = () => {
@@ -120,12 +120,14 @@ class TapControl extends React.Component {
   }
   }
   TapControl.propTypes = {
-    masterTapList: PropTypes.object
+    masterTapList: PropTypes.object,
+    formVisibleOnPage: PropTypes.object
   };
 
   const mapStateToProps = state => {
     return {
-      masterTapList: state
+      masterTapList: state,
+      formVisibleOnPage: state.formVisibleOnPage
     }
   }
   TapControl = connect(mapStateToProps)(TapControl);
