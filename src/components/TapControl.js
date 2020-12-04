@@ -1,7 +1,7 @@
 import React from 'react';
 import NewTapForm from './NewTapForm';
 import EditTapForm from './EditTapForm'
-import Taplist from './TapList';
+import Taplist from './Taplist';
 import TapDetail from './TapDetail';
 import { connect } from 'react-redux';
 
@@ -11,6 +11,7 @@ class TapControl extends React.Component {
     super(props);
     console.log(props);
     this.state = {
+      masterTapList: [],
       formVisibleOnPage: false,
       selectedTap: null,
       editing: false
