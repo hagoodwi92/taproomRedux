@@ -9,6 +9,7 @@ function TapList(props){
       {/* We now need to map over the values of an object, not an array. */}
       {Object.values(props.tapList).map((tap) =>
         <Tap
+          whenBuyClicked = { props.onBuyItem }
           whenTapClicked = { props.onTapSelection }
           name={tap.name}
           brand={tap.brand}
@@ -27,7 +28,8 @@ function TapList(props){
 TapList.propTypes = {
   // The PropType below has been updated - it's now an object, not an array.
   tapList: PropTypes.object,
-  onTapSelection: PropTypes.func
+  onTapSelection: PropTypes.func,
+  onBuyItem: PropTypes.func
 };
 
 export default TapList;
