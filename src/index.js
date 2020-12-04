@@ -7,15 +7,19 @@ import { createStore } from 'redux';
 import reducer from './reducers/tap-list-reducer';
 import { Provider } from 'react-redux';
 
-
 const store = createStore(reducer);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+store.subscribe(() =>
+  console.log(store.getState())
 );
+
+ReactDOM.render(
+
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+); 
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

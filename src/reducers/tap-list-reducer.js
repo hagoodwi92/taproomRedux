@@ -18,13 +18,13 @@ export default (state = {}, action) => {
     return newState;
   case 'UPDATE_TAP':
     return Object.assign({}, state, {
-      [1]: {
+      [id]: {
         name: 'Update',
         brand: 'Update',
         price: 7,
         quantity: 2,
         alcoholContent: 'Update',
-        id: 1
+        id: id
       }
     });
   default:

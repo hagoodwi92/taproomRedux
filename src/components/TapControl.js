@@ -12,9 +12,9 @@ class TapControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       masterTapList: [],
-      selectedTap: null
+      selectedTap: null,
+      editing: false
     };
-    
   }
 
   handleDeletingTap = (id) => {
@@ -80,7 +80,6 @@ class TapControl extends React.Component {
       selectedTap: null
     });
   }
-
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -89,8 +88,7 @@ class TapControl extends React.Component {
       buttonText = "Return to Tap List";
     }
     else if (this.state.selectedTap != null) {
-      currentlyVisibleState = <TapDetail tap = {this.state.selectedTap} onClickingDelete = {this.handleDeletingTap}
-      onClickingEdit = {this.handleEditClick} />
+      currentlyVisibleState = <TapDetail tap = {this.state.selectedTap} onClickingDelete = {this.handleDeletingTap} onClickingEdit = {this.handleEditClick}/>
       buttonText = "Return to Tap List";
     }
     else if (this.state.formVisibleOnPage) {
@@ -110,6 +108,6 @@ class TapControl extends React.Component {
   }
 
 
-  TapControl = connect()(TapControl);
+  // TapControl = connect()(TapControl);
 
   export default TapControl;
