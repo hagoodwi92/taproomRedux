@@ -27,6 +27,12 @@ export default (state = {}, action) => {
         id: id
       }
     });
+    case 'SHOW_TAP':
+      return Object.assign({}, state, {
+        [id]: {
+          id: id 
+        }
+      });
   default:
     return state;
   }

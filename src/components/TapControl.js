@@ -13,8 +13,8 @@ class TapControl extends React.Component {
     console.log(props);
     this.state = {
       // formVisibleOnPage: false,
-      selectedTap: null,
-      editing: false
+      // selectedTap: null,
+      // editing: false
     };
   }
 
@@ -47,8 +47,15 @@ class TapControl extends React.Component {
     const selectedTap = this.props.masterTapList[id];
     this.setState({selectedTap: selectedTap});
   }
-
-  
+  // handleChangingSelectedTap = (id) => {
+  //   const {dispatch} = this.props;
+  //   const action = {
+  //     type: 'SHOW_TAP',
+  //     id: id
+  //   }
+  //   dispatch(action);
+  //   this.setState({selectedTap: null});
+  // }
 
   handleAddingNewTapToList = (newTap) => {
     const {dispatch} = this.props;
@@ -63,7 +70,7 @@ class TapControl extends React.Component {
       alcoholContent: alcoholContent,
     }
     dispatch(action);
-    // this.setState({formVisibleOnPage: false });
+    this.setState({formVisibleOnPage: false });
   }
 
   handleClick = () => {
@@ -84,11 +91,19 @@ class TapControl extends React.Component {
   }
 
   handleEditingTapInList = (tapToEdit) => {
-    const editedMasterTapList = this.state.masterTapList
-      .filter(tap => tap.id !== this.state.selectedTap.id)
-      .concat(tapToEdit);
+    const {dispatch} = this.props;
+    const {id, name, brand, price, quantity, alcoholContent} = tapToEdit;
+    const action = {
+      type: 'ADD_TAP',
+      id: id,
+      name: name,
+      brand: brand,
+      price: price,
+      quantiy: quantity,
+      alcoholContent: alcoholContent,
+    }
+    dispatch(action);
     this.setState({
-      masterTapList: editedMasterTapList,
       editing: false,
       selectedTap: null
     });
@@ -120,14 +135,12 @@ class TapControl extends React.Component {
   }
   }
   TapControl.propTypes = {
-    masterTapList: PropTypes.object,
-    formVisibleOnPage: PropTypes.object
+    masterTapList: PropTypes.object
   };
 
   const mapStateToProps = state => {
     return {
-      masterTapList: state,
-      formVisibleOnPage: state.formVisibleOnPage
+      masterTapList: state
     }
   }
   TapControl = connect(mapStateToProps)(TapControl);
