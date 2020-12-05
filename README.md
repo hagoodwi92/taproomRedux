@@ -2,6 +2,8 @@
 
 This React application lists available taps, as well as other details about the tap. 
 
+Shared state handles by redux store, but not local state yet. Work in progress, still needs action controllers as well. 
+
 # Technologies used
 
 React, JSX, create-react-app, bootstrap
