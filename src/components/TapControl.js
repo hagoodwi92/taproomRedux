@@ -5,6 +5,7 @@ import Taplist from './Taplist';
 import TapDetail from './TapDetail';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
+import * as a from './../actions';
 
 class TapControl extends React.Component {
 
@@ -14,16 +15,13 @@ class TapControl extends React.Component {
     this.state = {
       // formVisibleOnPage: false,
       // selectedTap: null,
-      // editing: false
+      editing: false
     };
   }
 
   handleDeletingTap = (id) => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'DELETE_TAP',
-      id: id
-    }
+    const action = a.deleteTap(id);
     dispatch(action);
     this.setState({selectedTap: null});
   }
@@ -43,46 +41,44 @@ class TapControl extends React.Component {
     })
   }
 
-  handleChangingSelectedTap = (id) => {
-    const selectedTap = this.props.masterTapList[id];
-    this.setState({selectedTap: selectedTap});
-  }
   // handleChangingSelectedTap = (id) => {
-  //   const {dispatch} = this.props;
-  //   const action = {
-  //     type: 'SHOW_TAP',
-  //     id: id
-  //   }
-  //   dispatch(action);
-  //   this.setState({selectedTap: null});
+  //   const selectedTap = this.props.masterTapList[id];
+  //   this.setState({selectedTap: selectedTap});
   // }
+  handleChangingSelectedTap = (id) => {
+    const {dispatch} = this.props;
+    const action = {
+      type: 'SHOW_TAP',
+      id: id
+    }
+    dispatch(action);
+    // this.setState({selectedTap: null});
+  }
 
   handleAddingNewTapToList = (newTap) => {
     const {dispatch} = this.props;
-    const {id, name, brand, price, quantity, alcoholContent} = newTap;
-    const action = {
-      type: 'ADD_TAP',
-      id: id,
-      name: name,
-      brand: brand,
-      price: price,
-      quantiy: quantity,
-      alcoholContent: alcoholContent,
-    }
+    const action = a.addTap(newTap);
     dispatch(action);
-    this.setState({formVisibleOnPage: false });
+    const action2 = {
+      type: 'TOGGLE_FORM'
+    }
+    dispatch(action2);
   }
 
   handleClick = () => {
     if (this.state.selectedTap != null) {
       this.setState({
-        formVisibleOnPage: false,
-        selectedTap: null
+        // formVisibleOnPage: false,
+        selectedTap: null,
+        editing: false
       });
     } else {
-      this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage,
-      }));
+      const {dispatch} = this.props;
+      const action = a.toggleForm();
+      dispatch(action);
+      // this.setState(prevState => ({
+      //   formVisibleOnPage: !prevState.formVisibleOnPage,
+      // }));
     }
   }
 
@@ -92,16 +88,7 @@ class TapControl extends React.Component {
 
   handleEditingTapInList = (tapToEdit) => {
     const {dispatch} = this.props;
-    const {id, name, brand, price, quantity, alcoholContent} = tapToEdit;
-    const action = {
-      type: 'ADD_TAP',
-      id: id,
-      name: name,
-      brand: brand,
-      price: price,
-      quantiy: quantity,
-      alcoholContent: alcoholContent,
-    }
+    const action = a.addTap(tapToEdit);
     dispatch(action);
     this.setState({
       editing: false,
@@ -119,7 +106,7 @@ class TapControl extends React.Component {
       currentlyVisibleState = <TapDetail tap = {this.state.selectedTap} onClickingDelete = {this.handleDeletingTap} onClickingEdit = {this.handleEditClick}  />
       buttonText = "Return to Tap List";
     }
-    else if (this.state.formVisibleOnPage) {
+    else if (this.props.formVisibleOnPage) {
       currentlyVisibleState = <NewTapForm onNewTapCreation={this.handleAddingNewTapToList}  />;
       buttonText = "Return to Tap List";
     } else {
@@ -136,13 +123,15 @@ class TapControl extends React.Component {
   }
   TapControl.propTypes = {
     masterTapList: PropTypes.object,
-    formVisibleOnPage: PropTypes.bool
+    formVisibleOnPage: PropTypes.bool,
+    selectedTap: PropTypes.object
   };
 
   const mapStateToProps = state => {
     return {
-      masterTapList: state,
+      masterTapList: state.masterTapList,
       formVisibleOnPage: state.formVisibleOnPage,
+      selectedTap: state.selectedTap
     }
   }
   TapControl = connect(mapStateToProps)(TapControl);

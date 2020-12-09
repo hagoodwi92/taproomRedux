@@ -1,4 +1,5 @@
 import tapListReducer from '../../reducers/tap-list-reducer';
+import * as c from '../../actions/ActionTypes.js';
 
 describe('tapListReducer', () => {
 
@@ -32,7 +33,7 @@ describe('tapListReducer', () => {
   test('Should successfully add new tap data to masterTapList', () => {
     const {name, brand, price, quantity, alcoholContent, id} = tapData;
     action = {
-      type:  'ADD_TAP',
+      type:  c.ADD_TAP,
       name: name,
       brand: brand,
       price: price,
@@ -53,7 +54,7 @@ describe('tapListReducer', () => {
 });
 test('Should successfully update a tap', () => {
   action = {
-    type: 'UPDATE_TAP',
+    type: c.UPDATE_TAP,
     name: 'Update',
     brand: 'Update',
     price: 7,
@@ -78,7 +79,7 @@ test('Should successfully update a tap', () => {
 });
 test('Should successfully remove a tap', () => {
   action = {
-    type: 'DELETE_TAP',
+    type: c.DELETE_TAP,
     id: 1
   };
   expect(tapListReducer(currentState, action)).toEqual({
